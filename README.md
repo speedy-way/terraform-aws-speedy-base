@@ -1,2 +1,2 @@
-# terraform-aws-speedy-ops-base
+# terraform-aws-speedy-base
 Base infrastrcuture necessary to create products
