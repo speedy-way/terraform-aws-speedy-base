@@ -1,7 +1,7 @@
 locals {
   azs = [
     for suffix in slice(var.availability-zones-pool, 0, var.number-of-availability-zones + 1) :
-    "${var.region}-${suffix}"
+    "${var.region}${suffix}"
   ]
   public-subnets = [
     for netnum in range(0, var.number-of-availability-zones) :
