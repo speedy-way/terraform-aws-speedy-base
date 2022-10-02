@@ -176,7 +176,7 @@ module "public-alb" {
   load_balancer_type = "application"
 
   vpc_id          = module.vpc.vpc_id
-  subnets         = local.public-subnets
+  subnets         = module.vpc.public_subnets
   security_groups = [aws_security_group.public_alb.id]
 
   access_logs = {
@@ -196,7 +196,7 @@ module "private-alb" {
   load_balancer_type = "application"
 
   vpc_id          = module.vpc.vpc_id
-  subnets         = local.private-subnets
+  subnets         = module.vpc.private_subnets
   security_groups = [aws_security_group.private_alb.id]
 
   access_logs = {
