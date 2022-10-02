@@ -26,18 +26,28 @@ module "public-alb" {
 
   https_listeners = [
     {
-      port               = 443
-      protocol           = "HTTPS"
-      certificate_arn    = module.acm.acm_certificate_arn
-      target_group_index = 0
+      port            = 443
+      protocol        = "HTTPS"
+      certificate_arn = module.acm.acm_certificate_arn
+      action_type     = "fixed-response"
+      fixed_response = {
+        content_type = "text/plain"
+        message_body = "Not found"
+        status_code  = "404"
+      }
     }
   ]
 
   http_tcp_listeners = [
     {
-      port               = 80
-      protocol           = "HTTP"
-      target_group_index = 0
+      port        = 80
+      protocol    = "HTTP"
+      action_type = "redirect"
+      redirect = {
+        port        = "443"
+        protocol    = "HTTPS"
+        status_code = "HTTP_301"
+      }
     }
   ]
 }
@@ -70,18 +80,28 @@ module "private-alb" {
 
   https_listeners = [
     {
-      port               = 443
-      protocol           = "HTTPS"
-      certificate_arn    = module.acm.acm_certificate_arn
-      target_group_index = 0
+      port            = 443
+      protocol        = "HTTPS"
+      certificate_arn = module.acm.acm_certificate_arn
+      action_type     = "fixed-response"
+      fixed_response = {
+        content_type = "text/plain"
+        message_body = "Not found"
+        status_code  = "404"
+      }
     }
   ]
 
   http_tcp_listeners = [
     {
-      port               = 80
-      protocol           = "HTTP"
-      target_group_index = 0
+      port        = 80
+      protocol    = "HTTP"
+      action_type = "redirect"
+      redirect = {
+        port        = "443"
+        protocol    = "HTTPS"
+        status_code = "HTTP_301"
+      }
     }
   ]
 }
