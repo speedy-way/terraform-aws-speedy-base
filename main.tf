@@ -52,6 +52,11 @@ module "flow_logs_bucket" {
 
   bucket_prefix = "${var.organization}-speedyway-vpc-flow-logs"
 
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+
   tags = local.tags
 }
 
@@ -104,6 +109,11 @@ module "alb_logs_bucket" {
   version = "3.4.0"
 
   bucket_prefix = "${var.organization}-speedyway-alb-logs"
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
 
   tags = local.tags
 }
