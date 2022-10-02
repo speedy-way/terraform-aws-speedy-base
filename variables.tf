@@ -32,3 +32,27 @@ variable "single-nat-gateway" {
   description = "Single NAT gateway for all private subnets. Disable if hitting NAT gateway bottleneck. Incur extra costs."
   type        = bool
 }
+
+variable "create-shared-albs" {
+  description = "Enables or disables creation of shared ALBs. `zone` is required if this options is enabled."
+  default     = true
+  type        = bool
+}
+
+variable "zone" {
+  description = "Route53 zone to use by ACM to create an SSL certificate for the ALB. Necessary if `create-shared-albs` is enabled."
+  default     = null
+  type        = string
+}
+
+variable "create-zone" {
+  description = "If this option is enabled, the zone will be created with the provided delegation set. Delegation set id must be provided."
+  default     = true
+  type        = bool
+}
+
+variable "delegation-set-id" {
+  description = "Delegation set id used to create the zone."
+  default     = null
+  type        = string
+}
