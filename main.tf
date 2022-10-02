@@ -199,6 +199,8 @@ module "public-alb" {
   source  = "terraform-aws-modules/alb/aws"
   version = "~> 6.0"
 
+  depends_on = [aws_s3_bucket_policy.alb_logs_bucket]
+
   name = "${var.organization}-speedyway-public"
 
   load_balancer_type = "application"
@@ -218,6 +220,8 @@ module "public-alb" {
 module "private-alb" {
   source  = "terraform-aws-modules/alb/aws"
   version = "~> 6.0"
+
+  depends_on = [aws_s3_bucket_policy.alb_logs_bucket]
 
   name = "${var.organization}-speedyway-private"
 
