@@ -1,5 +1,5 @@
 resource "aws_route53_zone" "this" {
-  count = range(
+  count = (
     var.create-zone == true
     ? 1
     : 0

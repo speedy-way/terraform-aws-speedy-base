@@ -1,7 +1,7 @@
 data "aws_caller_identity" "this" {}
 
 data "aws_route53_zone" "this" {
-  count = range(
+  count = (
     var.create-zone == true
     ? 0
     : 1

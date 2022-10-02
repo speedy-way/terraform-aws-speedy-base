@@ -3,7 +3,7 @@ module "public-alb" {
   version = "~> 6.0"
 
   depends_on = [aws_s3_bucket_policy.alb_logs_bucket]
-  count = range(
+  count = (
     var.create-shared-albs == true
     ? 1
     : 0
@@ -47,7 +47,7 @@ module "private-alb" {
   version = "~> 6.0"
 
   depends_on = [aws_s3_bucket_policy.alb_logs_bucket]
-  count = range(
+  count = (
     var.create-shared-albs == true
     ? 1
     : 0
