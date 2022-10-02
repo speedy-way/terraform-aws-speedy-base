@@ -25,7 +25,6 @@ module "flow_logs_bucket" {
   version = "3.4.0"
 
   bucket_prefix = "${var.organization}-speedyway-vpc-flow-logs"
-  vpc_id        = module.vpc.vpc_id
 
   tags = local.tags
 }
@@ -79,7 +78,6 @@ module "alb_logs_bucket" {
   version = "3.4.0"
 
   bucket_prefix = "${var.organization}-speedyway-alb-logs"
-  vpc_id        = module.vpc.vpc_id
 
   tags = local.tags
 }
